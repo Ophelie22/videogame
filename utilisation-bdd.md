@@ -19,3 +19,12 @@ SELECT FROM videogame WHERE id = 4
 
 avant janvier 87
 SELECT FROM videogame where release_date < '1987-01-01 :
+
+
+INSERT INTO videogame (
+    title,
+    editor,
+    release_date) values
+('Tomb Raidere',
+    'Eidos',
+    '1996-11-25')
