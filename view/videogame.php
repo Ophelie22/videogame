@@ -17,22 +17,15 @@
             <p class="lead">Voici une petite interface toute simple permettant de visualiser les jeux vidéos de ma base de données, mais aussi de les ajouter !</p>
         </div>
         <h1></h1>
-        <?php foreach ($errorMsgList as $errorMsg): ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $errorMsg ?>
-        </div>
-        <?php endforeach; ?>
         <div class="row">
             <div class="col-12 col-md-8">
                 <a href="index.php?order=name" class="btn btn-primary">Trier par nom</a>&nbsp;
                 <a href="index.php?order=editor" class="btn btn-info">Trier par éditeur</a>&nbsp;
-                <!-- #2 (optionnel) n'afficher ce bouton que s'il y a un tri -->
+                <!-- TODO #2 (optionnel) n'afficher ce bouton que s'il y a un tri -->
                 <!-- --- START OF YOUR CODE --- -->
-                <?php if (isset($_GET['order'])): ?>
-                <a href="index.php" class="btn btn-dark">Annuler le tri</a>
-                <?php endif; ?>
+                <a href="index.php" class="btn btn-dark">Annuler le tri</a><br>
                 <!-- --- END OF YOUR CODE --- -->
-                <br><br>
+                <br>
                 <table class="table table-striped">
                 <thead>
                     <tr>
@@ -44,20 +37,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--#1 boucler sur le tableau $videogameList contenant tous les jeux vidéos-->
-                    <?php
-                    foreach ($videogameList as $videogame) {
-                        ?><tr>
-                        <td><?= $videogame['id'] ?></td>
-                        <td><?= $videogame['name'] ?></td>
-                        <td><?= $videogame['editor'] ?></td>
-                        <td><?= $videogame['release_date'] ?></td>
-                        <!-- On fait appel à l'index dans $platformList grâce au platform_id du jeu -->
-                        <td><?= $platformList[$videogame['platform_id']] ?></td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
+                     <!-- TODO #1 boucler sur le tableau $videogameList contenant tous les jeux vidéos
+                    (et donc supprimer ces 2 lignes d'exemple) -->
+                <!-- --- START OF YOUR CODE --- -->
+                <tr>
+                        <td>-</td>
+                        <td>Exemple</td>
+                        <td>à faire</td>
+                        <td>depuis</td>
+                        <td>la DB</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Les chevaliers de Baphomet</td>
+                        <td>Virgin Interactive</td>
+                        <td>1996-09-24</td>
+                        <td>PC</td>
+                    </tr>
                     <!-- --- END OF YOUR CODE --- -->
                 </tbody>
                 </table>

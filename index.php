@@ -59,7 +59,7 @@ $platformList = array(
 // TODO #1 écrire la requête SQL permettant de récupérer les jeux vidéos en base de données (mais ne pas l'exécuter maintenant)
 // --- START OF YOUR CODE ---
 $sql = '
-    SELECT * ...
+    SELECT * FROM videogame
 ';
 // --- END OF YOUR CODE ---
 
