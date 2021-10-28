@@ -41,18 +41,24 @@ if (!empty($_POST)) {
 
     // --- END OF YOUR CODE ---
 }
-
 // Liste des consoles de jeux
-// TODO #4 (optionnel) récupérer cette liste depuis la base de données
-// --- START OF YOUR CODE ---
-$platformList = [  
-    1 => 'PC',
-    2 => 'MegaDrive',
-    3 => 'SNES',
-    4 => 'PlayStation'
-];
+//#4 (optionnel) récupérer cette liste depuis la base de données
 
-// --- END OF YOUR CODE ---
+// $platformList = [  
+//     1 => 'PC',
+//     2 => 'MegaDrive',
+//     3 => 'SNES',
+//     4 => 'PlayStation'
+// ];
+$result = $pdo->query('SELECT * FROM platform');
+$resultatListPlatform  = $result ->fetchAll();
+// on va faire une boucle , et initialiser platformList en tt que tableau vide, ca va
+// ressembler a ce qu'il y aplus haut sauf qu'il sera dynamiquement cree à partir 
+//de la base de données
+$platformList = [];
+foreach($resultatListPlatform as $resultatPlatform){
+    $platformList[$resultatPlatform['id']] = $resultatPlatform['name'];
+}
 
 $sql = '
     SELECT * 
