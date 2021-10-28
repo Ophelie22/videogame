@@ -6,8 +6,8 @@ require __DIR__.'/inc/db.php'; // Pour __DIR__ => http://php.net/manual/fr/langu
 //          car elle a été créée par le fichier inclus ci-dessus
 
 // Initialisation de variables (évite les "NOTICE - variable inexistante")
-$videogameList = array();
-$platformList = array();
+$videogameList = [];
+$platformList = [];
 $name = '';
 $editor = '';
 $release_date = '';
@@ -46,12 +46,12 @@ if (!empty($_POST)) {
 // Liste des consoles de jeux
 // TODO #4 (optionnel) récupérer cette liste depuis la base de données
 // --- START OF YOUR CODE ---
-$platformList = array(
+$platformList = [  
     1 => 'PC',
     2 => 'MegaDrive',
     3 => 'SNES',
     4 => 'PlayStation'
-);
+];
 
 
 // --- END OF YOUR CODE ---
@@ -59,7 +59,8 @@ $platformList = array(
 // TODO #1 écrire la requête SQL permettant de récupérer les jeux vidéos en base de données (mais ne pas l'exécuter maintenant)
 // --- START OF YOUR CODE ---
 $sql = '
-    SELECT * FROM videogame
+    SELECT * 
+    FROM videogame
 ';
 // --- END OF YOUR CODE ---
 
@@ -86,7 +87,13 @@ if (!empty($_GET['order'])) {
 }
 // TODO #1 exécuter la requête contenue dans $sql et récupérer les valeurs dans la variable $videogameList
 // --- START OF YOUR CODE ---
+// $pdo est un objet de la classe PDO
+// $result est un objet de la classe PDOStatement (un résultat de requête)
+// $videogameList est un tableau avec tous les résultats
 
+// On peut faire le code du commentaire précédent en une seule ligne
+
+$videogameList = $pdo->query($sql)->fetchAll();
 
 // --- END OF YOUR CODE ---
 

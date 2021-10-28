@@ -5,6 +5,5 @@ $pdo = new PDO(
     // charset permet de transmettre proprement les caractères UTF-8
     'ophelie', // login
     'pensee', // password
-    // le tableau qui précise d'afficher les erreurs
-    [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]
+   
 );
