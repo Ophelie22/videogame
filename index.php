@@ -29,10 +29,14 @@ if (!empty($_POST)) {
         INSERT INTO videogame (name, editor, release_date, platform_id)
         VALUES ('{$name}', '{$editor}', '{$release_date}', {$platform})
     ";
-    // TODO #3 exécuter la requête qui insère les données
+    //#3 exécuter la requête qui insère les données
     $pdo->exec($insertQuery);
-    // TODO #3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
-    // --- START OF YOUR CODE ---
+
+    //3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
+    //Sans la redirection, le navigateur se souvient que la page a été générée depuis l'envoi d'un formulaire
+    // Donc, si on recharge la page, le navigateur propose de renvoyer le formulaire. Actuellement, ça nous ferait ajouter le même jeu une nouvelle fois
+    // Pour éviter ça, on redirige l'utilisateur sur index.php, mais cette fois, la page sera chargée en GET, ce qui élimine le problème expliqué
+    header('Location: index.php');
 
 
     // --- END OF YOUR CODE ---
