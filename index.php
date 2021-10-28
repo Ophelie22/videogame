@@ -11,6 +11,8 @@ $editor = '';
 $release_date = '';
 $platform = '';
 
+// On crée une nouvelle variable pour initialiser un tableau de message d'erreurs
+$errorMsgList = [];
 // Si le formulaire a été soumis
 if (!empty($_POST)) {
     // Récupération des valeurs du formulaire dans des variables
@@ -22,7 +24,10 @@ if (!empty($_POST)) {
     //#3 (optionnel) valider les données reçues (ex: donnée non vide)
     // --- START OF YOUR CODE ---
     if (empty($name)) {
-        $errorMsg = 'Le nom fournit est vide';
+        $errorMsgList[] = 'Le nom fournit est vide';
+    }
+    if (empty($editor)) {
+        $errorMsgList[] = 'L\'éditeur fournit est vide';
     }
     // --- END OF YOUR CODE ---
     // Insertion en DB du jeu video
@@ -32,7 +37,7 @@ if (!empty($_POST)) {
     ";
     
     // On ajoute une condition pour ne pas exécuter la requête si $errorMsg contient un message
-    if (!isset($errorMsg)) {
+    if (empty($errorMsgList)) {
         $pdo->exec($insertQuery);
 
         //3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
