@@ -38,8 +38,6 @@ if (!empty($_POST)) {
     // --- START OF YOUR CODE ---
 
 
-
-
     // --- END OF YOUR CODE ---
 }
 
@@ -56,7 +54,6 @@ $platformList = [
 
 // --- END OF YOUR CODE ---
 
-
 $sql = '
     SELECT * 
     FROM videogame
@@ -67,14 +64,12 @@ if (!empty($_GET['order'])) {
     // Récupération du tri choisi
     $order = trim($_GET['order']);
     if ($order == 'name') {
-        // TODO #2 écrire la requête avec un tri par nom croissant
-        // --- START OF YOUR CODE ---
+       
         $sql = '
             SELECT * 
             FROM videogame
             ORDER BY name ASC
         ';
-    
     }
     else if ($order == 'editor') {
        
@@ -82,8 +77,7 @@ if (!empty($_GET['order'])) {
             SELECT * 
             FROM videogame
             ORDER BY editor ASC
-        ';
-       
+        '; 
     }
 }
 

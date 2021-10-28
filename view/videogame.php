@@ -48,7 +48,8 @@
                         <td><?= $videogame['name'] ?></td>
                         <td><?= $videogame['editor'] ?></td>
                         <td><?= $videogame['release_date'] ?></td>
-                        <td><?=$videogame['platform_id']?></td>
+    <!-- ---On fait appel à l'index ds Platformlist grace au plateforid du jeu--- -->
+                        <td><?= $platformList[$videogame['platform_id']]?></td>
                         </tr>
                         <?php
                     endforeach;
