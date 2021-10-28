@@ -26,11 +26,11 @@
             <div class="col-12 col-md-8">
                 <a href="index.php?order=name" class="btn btn-primary">Trier par nom</a>&nbsp;
                 <a href="index.php?order=editor" class="btn btn-info">Trier par éditeur</a>&nbsp;
-                <!-- TODO #2 (optionnel) n'afficher ce bouton que s'il y a un tri -->
-                <!-- --- START OF YOUR CODE --- -->
+                
+                <?php if (isset($_GET['order'])): ?>
                 <a href="index.php" class="btn btn-dark">Annuler le tri</a><br>
-                <!-- --- END OF YOUR CODE --- -->
-                <br>
+                <?php endif; ?>
+                <br><br>
                 <table class="table table-striped">
                 <thead>
                     <tr>
