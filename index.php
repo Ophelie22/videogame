@@ -29,6 +29,16 @@ if (!empty($_POST)) {
     if (empty($editor)) {
         $errorMsgList[] = 'L\'éditeur fournit est vide';
     }
+    // Pour $release_date, on pourrait vérifier qu'il sâgit bien d'une date au format YYYY-MM-DD pour la stocker en BDD
+    // Seulement le meilleur serait d'utiliser une regex ou faire un algo un poil compliqué mais par souci de compréhension, on ne s'aventure pas aujord'hui sur ces pistes
+    // Merci Céline : On a quand même une solution avec la classe DateTime
+    if (empty($release_date) || DateTime::createFromFormat('Y-m-d', $release_date) == false) {
+        $errorMsgList[] = 'La date fournit est invalide';
+    }
+
+    if (!is_int($platform) || $platform <= 0) {
+        $errorMsgList[] = 'La plateforme choisie est invalide';
+    }
     // --- END OF YOUR CODE ---
     // Insertion en DB du jeu video
     $insertQuery = "
