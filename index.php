@@ -85,17 +85,16 @@ if (!empty($_GET['order'])) {
         // --- END OF YOUR CODE ---
     }
 }
-// TODO #1 exécuter la requête contenue dans $sql et récupérer les valeurs dans la variable $videogameList
-// --- START OF YOUR CODE ---
+
 // $pdo est un objet de la classe PDO
 // $result est un objet de la classe PDOStatement (un résultat de requête)
 // $videogameList est un tableau avec tous les résultats
 
 // On peut faire le code du commentaire précédent en une seule ligne
 
-$videogameList = $pdo->query($sql)->fetchAll();
+$videogameList = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-// --- END OF YOUR CODE ---
+//var_dump($videogameList);
 
 // Inclusion du fichier s'occupant d'afficher le code HTML
 // Je fais cela car mon fichier actuel est déjà assez gros, donc autant le faire ailleurs (pas le métier hein ! ;) )
