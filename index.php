@@ -51,13 +51,13 @@ if (!empty($_POST)) {
 //     4 => 'PlayStation'
 // ];
 $result = $pdo->query('SELECT * FROM platform');
-$resultatListPlatform  = $result ->fetchAll();
+$fetchPlatform  = $result ->fetchAll(PDO::FETCH_ASSOC);
 // on va faire une boucle , et initialiser platformList en tt que tableau vide, ca va
 // ressembler a ce qu'il y aplus haut sauf qu'il sera dynamiquement cree à partir 
 //de la base de données
-$platformList = [];
-foreach($resultatListPlatform as $resultatPlatform){
-    $platformList[$resultatPlatform['id']] = $resultatPlatform['name'];
+//$platformList = [];initialiser deja en haut d epage
+foreach($fetchPlatform as $resultatPlatform){
+    $platformList[$platform['id']] = $platform['name'];
 }
 
 $sql = '
