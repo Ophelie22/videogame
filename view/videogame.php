@@ -44,9 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--#1 boucler sur le tableau $videogameList contenant tous les jeux vidéos
-                    (et donc supprimer ces 2 lignes d'exemple) -->
-                    <!-- --- START OF YOUR CODE --- -->
+                    <!--#1 boucler sur le tableau $videogameList contenant tous les jeux vidéos-->
                     <?php
                     foreach ($videogameList as $videogame) {
                         ?><tr>
