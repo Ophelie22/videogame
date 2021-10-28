@@ -19,27 +19,28 @@ if (!empty($_POST)) {
     $release_date = isset($_POST['release_date']) ? $_POST['release_date'] : '';
     $platform = isset($_POST['platform']) ? intval($_POST['platform']) : 0;
 
-    // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
+    //#3 (optionnel) valider les données reçues (ex: donnée non vide)
     // --- START OF YOUR CODE ---
-
+    if (empty($name)) {
+        $errorMsg = 'Le nom fournit est vide';
+    }
     // --- END OF YOUR CODE ---
-
     // Insertion en DB du jeu video
     $insertQuery = "
         INSERT INTO videogame (name, editor, release_date, platform_id)
         VALUES ('{$name}', '{$editor}', '{$release_date}', {$platform})
     ";
-    //#3 exécuter la requête qui insère les données
-    $pdo->exec($insertQuery);
+    
+    // On ajoute une condition pour ne pas exécuter la requête si $errorMsg contient un message
+    if (!isset($errorMsg)) {
+        $pdo->exec($insertQuery);
 
-    //3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
-    //Sans la redirection, le navigateur se souvient que la page a été générée depuis l'envoi d'un formulaire
-    // Donc, si on recharge la page, le navigateur propose de renvoyer le formulaire. Actuellement, ça nous ferait ajouter le même jeu une nouvelle fois
-    // Pour éviter ça, on redirige l'utilisateur sur index.php, mais cette fois, la page sera chargée en GET, ce qui élimine le problème expliqué
-    header('Location: index.php');
-
-
-    // --- END OF YOUR CODE ---
+        //3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
+        //Sans la redirection, le navigateur se souvient que la page a été générée depuis l'envoi d'un formulaire
+        // Donc, si on recharge la page, le navigateur propose de renvoyer le formulaire. Actuellement, ça nous ferait ajouter le même jeu une nouvelle fois
+        // Pour éviter ça, on redirige l'utilisateur sur index.php, mais cette fois, la page sera chargée en GET, ce qui élimine le problème expliqué
+        header('Location: index.php');
+    }
 }
 // Liste des consoles de jeux
 //#4 (optionnel) récupérer cette liste depuis la base de données

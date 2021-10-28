@@ -17,6 +17,11 @@
             <p class="lead">Voici une petite interface toute simple permettant de visualiser les jeux vidéos de ma base de données, mais aussi de les ajouter !</p>
         </div>
         <h1></h1>
+        <?php if(isset($errorMsg)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $errorMsg ?>
+        </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-12 col-md-8">
                 <a href="index.php?order=name" class="btn btn-primary">Trier par nom</a>&nbsp;
