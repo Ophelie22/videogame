@@ -56,13 +56,11 @@ $platformList = [
 
 // --- END OF YOUR CODE ---
 
-// TODO #1 écrire la requête SQL permettant de récupérer les jeux vidéos en base de données (mais ne pas l'exécuter maintenant)
-// --- START OF YOUR CODE ---
+
 $sql = '
     SELECT * 
     FROM videogame
 ';
-// --- END OF YOUR CODE ---
 
 // Si un tri a été demandé, on réécrit la requête
 if (!empty($_GET['order'])) {
@@ -72,17 +70,20 @@ if (!empty($_GET['order'])) {
         // TODO #2 écrire la requête avec un tri par nom croissant
         // --- START OF YOUR CODE ---
         $sql = '
-            SELECT * ...
+            SELECT * 
+            FROM videogame
+            ORDER BY name ASC
         ';
-        // --- END OF YOUR CODE ---
+    
     }
     else if ($order == 'editor') {
-        // TODO #2 écrire la requête avec un tri par editeur croissant
-        // --- START OF YOUR CODE ---
+       
         $sql = '
-            SELECT * ...
+            SELECT * 
+            FROM videogame
+            ORDER BY editor ASC
         ';
-        // --- END OF YOUR CODE ---
+       
     }
 }
 
