@@ -7,3 +7,4 @@ $pdo = new PDO(
     'pensee', // password
    
 );
+?>
